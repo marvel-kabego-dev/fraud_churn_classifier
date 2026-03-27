@@ -1,0 +1,10 @@
+venv/
+data/raw/
+data/processed/
+__pycache__/
+.ipynb_checkpoints/
+Thumbs.db
+*.pkl
+*.joblib
+mlruns/
+.env

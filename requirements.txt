@@ -1,0 +1,27 @@
+#Data manipulation and analysis
+pandas
+numpy
+
+#Machine learning and Pipelines
+scikit-learn
+xgboost
+lightgbm
+
+#API and Web Frameworks
+fastapi
+uvicorn
+
+#Model Serialization
+joblib
+
+#Tracking and Experimentation
+mlflow
+
+#Data Validation
+pydantic
+
+#Tests
+pytest
+
+#Notebooks
+jupyter
