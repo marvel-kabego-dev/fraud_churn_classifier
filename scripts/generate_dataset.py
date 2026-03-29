@@ -24,6 +24,36 @@ notifications_opted_out = np.where(churn_labels == 1, np.random.choice([0, 1], s
 payment_method = np.random.choice(['credit_card', 'mobile_payment', 'bank_transfer'], size=n_users)
 user_id = np.array([f"USR_{i:04d}" for i in range(1, n_users + 1)])
 
+overlap_rate = 0.15
+n_overlap = int(n_users * overlap_rate)
+overlap_idx = np.random.choice(n_users, size=n_overlap, replace=False)
+
+transaction_amount[overlap_idx] = np.where(
+    fraud_labels[overlap_idx] == 1,
+    np.random.uniform(10, 500, n_overlap),
+    np.random.uniform(500, 5000, n_overlap)
+)
+transaction_hour[overlap_idx] = np.where(
+    fraud_labels[overlap_idx] == 1,
+    np.random.randint(6, 23, n_overlap),
+    np.random.randint(0, 6, n_overlap)
+)
+transaction_frequency[overlap_idx] = np.where(
+    fraud_labels[overlap_idx] == 1,
+    np.random.randint(0, 10, n_overlap),
+    np.random.randint(10, 50, n_overlap)
+)
+login_frequency[overlap_idx] = np.where(
+    churn_labels[overlap_idx] == 1,
+    np.random.randint(10, 50, n_overlap),
+    np.random.randint(1, 10, n_overlap)
+)
+support_contacts[overlap_idx] = np.where(
+    churn_labels[overlap_idx] == 1,
+    np.random.randint(0, 2, n_overlap),
+    np.random.randint(3, 10, n_overlap)
+)
+
 #Dataset Creation
 df = pd.DataFrame({
     'user_id': user_id,
